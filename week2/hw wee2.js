@@ -3,15 +3,51 @@
 
 
 
-  console.log('Testing function #1, countingLetters');
-
-test1();
-console.log('countingLetters Test Complete');
-
+// console.log('Testing function #1, countingLetters');
+// test1();
+// console.log('countingLetters Test Complete');
+//
+//
+// print("Test #5 starting up...")
+// test2()
+// print("Test #5 complete.")
 
 print("Test #5 starting up...")
-test2()
+test3()
 print("Test #5 complete.")
+
+
+// #6
+
+function convertToObject(input){
+const ob = {}
+
+  for (const key in input) {
+      let line = input[key]
+      print(key + " - "  + line)
+      ob[line[0]] = line[1]
+    }
+
+    return ob
+}
+
+function test3(){
+
+   const game_array = [
+        [ 'developer', 'Respawn' ],
+        [ 'producer', 'EA' ],
+        [ 'game', 'Star Wars Jedi: Fallen Order' ],
+        [ 'year', 2019 ]
+    ]
+    const out = "{ developer: 'Respawn', 'producer': 'EA', game: 'Star Wars Jedi: Fallen Order', year: 2019 } "
+    // print(game_array);
+    // print("Expected Output: ")
+    // print(out);
+    const r = convertToObject(game_array);
+    print(r);
+
+
+}
 
 
 function test2(){
