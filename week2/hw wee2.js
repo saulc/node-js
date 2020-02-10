@@ -8,6 +8,31 @@
 test1();
 console.log('countingLetters Test Complete');
 
+
+print("Test #5 starting up...")
+test2()
+print("Test #5 complete.")
+
+
+function test2(){
+  const ar = [1, 2, 3]
+  const ab = [1, 2, 3]
+  const bb = ['1', '2', '3']
+  print("Test matching input.")
+  print(ar)
+  print(ab)
+  let test =  compareArrays(ar, ab)
+  print( "arrays are equal: " )
+  print(test)
+  print("Test non matching input.")
+  print(ar)
+  print(bb)
+  print( "arrays are equal: " )
+  test = compareArrays(ar, bb)
+  print(test)
+}
+
+
 function test1(){
 let result = ''
   const quote = 'The greatest glory in living lies not in never falling, but in rising every time we fall.';
@@ -20,6 +45,8 @@ let result = ''
   console.log('output string: ' + result);
   // console.log('Test #1: ' + (output === result)  );
 }
+
+
 function print(msg){
   console.log(msg)
 }
@@ -30,6 +57,8 @@ function getIndex(c, l){
   }
 
 }
+
+// #4
 function countingLetters(phrase, punc) {
   const counter = {
     letters: [],
@@ -51,6 +80,19 @@ function countingLetters(phrase, punc) {
     return counter;
 }
 
+// #5
+function compareArrays(a1, a2){
+      if(a1.length !== a2.length) return false;
+
+      if(a1.length === 0) return true; // empty lists are equal.
+
+      for(let i =0; i<a1.length; i++){
+        const a = a1[i]
+        const b = a2[i]
+        if(a !== b) return false
+      }
+      return true;
+}
 
 function removeLetters(phrase, letter) {
   let rr = ''
