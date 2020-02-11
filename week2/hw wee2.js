@@ -2,37 +2,78 @@
 //cs4220
 
 
+test4()
+test5()
+test6()
+test7();
 
-// console.log('Testing function #1, countingLetters');
-// test1();
-// console.log('countingLetters Test Complete');
-//
-//
-// print("Test #5 starting up...")
-// test2()
-// print("Test #5 complete.")
+function test7(){
 
-print("Test #5 starting up...")
-test3()
-print("Test #5 complete.")
+    print("Test #7 starting up...")
+    const products = [[{
+        property: 'product',
+        assign: 'PS4'
+    }, {
+        property: 'company',
+        assign: 'Sony'
+    }, {
+        property: 'release',
+        assign: '2013'
+    }],
+    [{
+        property: 'product',
+        assign: 'Xbox One X'
+    }, {
+        property: 'company',
+        assign: 'Microsoft'
+    }, {
+        property: 'release',
+        assign: '2016'
+    }],
+     [{
+        property: 'product',
+        assign: 'Switch'
+    }, {
+        property: 'company',
+        assign: 'Nintendo'
+    }, {
+        property: 'release',
+        assign: '2017'
+    }]]
 
-
-// #6
-
-function convertToObject(input){
-const ob = {}
-
-  for (const key in input) {
-      let line = input[key]
-      print(key + " - "  + line)
-      ob[line[0]] = line[1]
-    }
-
-    return ob
+    print("Input:")
+    print(products)
+    print("output: ")
+    print(buildObject(products))
+    print("Test #7 complete.")
 }
 
-function test3(){
+//reformat the inner objects for nesting.
+function makeInner(inn){
+  const o = {}
+  for (const key in inn) {
+      let line = inn[key]
+      // print(line)
+      o[line['property']] = line['assign']
+  }
+  return o
+}
 
+// #7
+function buildObject(arr){
+   const o = {}
+   for(let i =0; i<arr.length; i++){
+     const element = makeInner(arr[i])
+     o[i+1] = element
+   }
+    return o;
+
+}
+
+
+function test6(){
+
+  print("Test #6 starting up...")
    const game_array = [
         [ 'developer', 'Respawn' ],
         [ 'producer', 'EA' ],
@@ -47,10 +88,13 @@ function test3(){
     print(r);
 
 
+    print("Test #6 complete.")
 }
 
 
-function test2(){
+function test5(){
+print("Test #5 starting up...")
+
   const ar = [1, 2, 3]
   const ab = [1, 2, 3]
   const bb = ['1', '2', '3']
@@ -66,27 +110,27 @@ function test2(){
   print( "arrays are equal: " )
   test = compareArrays(ar, bb)
   print(test)
+  print("Test #5 complete.")
 }
 
 
-function test1(){
-let result = ''
+function test4(){
+print("Test #4 starting up...")
   const quote = 'The greatest glory in living lies not in never falling, but in rising every time we fall.';
   const punctuations = [' ', ',', '.', '?', '!', ';', ':', '"', "'"];
   // const output =   { t: 6,h: 1,e: 10,g: 5,r: 5,a: 3, s: 3,l: 7,o: 2,y: 2,i: 10,n: 8,v: 3,f: 2,b: 1,u: 1,m: 1,w: 1 }
 
-  countingLetters(quote, punctuations);
+  const count = countingLetters(quote, punctuations);
   console.log('Input string: ' + quote);
   // console.log('expected string: ' + output);
-  console.log('output string: ' + result);
-  // console.log('Test #1: ' + (output === result)  );
+  console.log('output string: ')
+  print(count);
+
+
+    print("Test #4 complete.")
 }
 
-
-function print(msg){
-  console.log(msg)
-}
-
+//helper function thats no longer used...
 function getIndex(c, l){
   for( let i = 0; i< c.letters.length; i++){
     if(c.letters[i]=== l) return i
@@ -96,23 +140,22 @@ function getIndex(c, l){
 
 // #4
 function countingLetters(phrase, punc) {
-  const counter = {
-    letters: [],
-    counts: [],
-  }
-
-  for (let i = 0; i < phrase.length; i++) {
-      const letter = phrase[i]
-      if(counter.letters.includes(letter)){
-        const id = getIndex(counter, letter)
-        counter.counts[id] +=1
-
+  const counter = {}
+  const ph = phrase.toLowerCase()
+  for (let i = 0; i < ph.length; i++) {
+      const letter = ph[i]
+      if(letter in counter){
+        counter[letter] +=1
       }else {
-        counter.letters.push(letter)
-        counter.counts.push(1)
+        counter[ letter ] = 1
       }
     }
-    print(counter)
+    //clean punctuations
+    for (let i =0; i<punc.length; i++) {
+      const p = punc[i]
+      if(p in counter)
+        delete counter[p]
+    }
     return counter;
 }
 
@@ -130,6 +173,21 @@ function compareArrays(a1, a2){
       return true;
 }
 
+
+// #6
+
+function convertToObject(input){
+
+  const ob = {}
+  for (const key in input) {
+      let line = input[key]
+      print(key + " - "  + line)
+      ob[line[0]] = line[1]
+    }
+    return ob
+}
+
+
 function removeLetters(phrase, letter) {
   let rr = ''
 
@@ -138,4 +196,8 @@ function removeLetters(phrase, letter) {
       if(letter !== l) rr += l;
     }
     return rr;
+}
+
+function print(msg){
+  console.log(msg)
 }
