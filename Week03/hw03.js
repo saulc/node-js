@@ -10,12 +10,35 @@ test(i)
 function test(i){
    print('--> Starting Test#' + i + " <--")
 
-   if(i === 1) test1()
+   if(i === 1) test1();
+   else if(i === 2) test2();
 
   print('Test#' + i + ' complete.')
 }
 
+function test2(){
+  const manufacturer = 'nintendo';
+  const consoles = [
+      { item: 'Sony PS4 Pro', price: 399.99 },
+      { item: 'Microsoft Xbox One X', price: 499.99 },
+      { item: 'Nintendo Switch', price: 299.99 },
+      { item: 'Sony PS2 Console', price: 299.99 },
+      { item: 'Nintendo 64', price: 199.999 }
+      ];
 
+      print("All Consoles")
+      print(consoles)
+      print("filtering consoles for: " + manufacturer);
+
+      const r2 = consoles.filter(e => {
+        let temp = e['item'].toLowerCase()
+        //print(temp)
+        if(temp.includes(manufacturer)) return e;
+      });
+
+      print(r2)
+
+}
 // // // ARRAY - MAP
 // const squares = [2, 3, 4, 5];
 // const results = squares.map(n => {
@@ -32,24 +55,18 @@ function test1(){
       { name: 'Captain Marvel' },
       { name: 'Silver Surfer' }
   ];
+
+  let i = 0  //this is not nice but it works? ^_-
   const r = heros.map(n => {
     const ob = {}
     print(n)
-    ob['id'] = getId(ob)
+    ob['id'] = i++
     ob['hero'] = n['name']
     return ob
   });
   print(r)
 }
 
-function getId(o){
-  let size = 0
-  for ( key in o) {
-          size++;
-    }
-    return size;
-
-}
 function print(msg){
   console.log(msg)
 }
