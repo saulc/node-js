@@ -1,6 +1,6 @@
 //Saul Castro
-//cs4220 hw week 3
-//2/17/2020
+//node scripts for web pos.
+//7/28/2020
 
 
 //
@@ -10,6 +10,7 @@
 test2()
 test4()
 test5()
+test6()
 
 function test(i){
    print('--> Starting Test#' + i + " <--")
@@ -22,6 +23,38 @@ function test(i){
 
   print('--- Test#' + i + ' complete. ---')
 }
+
+function test6(){
+   print('--> Checking full inventory value <--')
+  const sales = [
+      {stockTotal: 0.00} ,
+      {totalItems:  0} ,
+      {  totaltypes:  0}
+      ];
+  print(sales)
+  const r = calculateSalesTotals(sales)
+  const ret = calcFullStock(r)
+  }
+
+
+  function calcFullStock(salestot){
+    const ft = 0
+    print(salestot)
+    // salestot.forEach(e => {
+    //   const tt = 0
+    //
+    //   const price = e['original']
+    //   const s = e['stock']
+    //   const dis = 'discount' in e ? e['discount'] : 0.0;
+    //   //couldnt' find anything for defualt
+    //   const sale = price - (price * dis);
+    //     e['total'] = sale * s
+    //     e['sale'] = sale
+    //   return e
+    // }
+    return ft
+  }
+
 
 function test5(){
   const sales = [
@@ -39,6 +72,7 @@ function test5(){
 function calculateSalesTotals(sales){
 
   sales.forEach(e => {
+    const tt = 0
     const price = e['original']
     const s = e['stock']
     const dis = 'discount' in e ? e['discount'] : 0.0;
@@ -54,14 +88,9 @@ return sales
 
 function test4(){
   const inventory = [
-          { item: 'Sony PS4 Pro', price: 399.99, stock: 33 },
-          { item: 'Atari', price: 125.0, stock: 550 },
-          { item: 'Microsoft Xbox One X', price: 499.99, stock: 15 },
-          { item: 'Nintendo Switch', price: 299.99, stock: 44 },
-          { item: 'Sony PS2 Console', price: 299.99, stock: 1111 },
-          { item: 'Nintendo 64', price: 199.999, stock: 2222 },
-          { item: 'Sega Genesis', price: 104.0, stock: 0 },
-          { item: 'Sega Saturn', price: 144.0, stock: 550 }
+          { item: 'a', price: 9.99, stock: 33 },
+          { item: 'At', price: 5.0, stock: 550 },
+          { item: 'X', price: 4.99, stock: 150 },
       ];
       print(inventory)
       const ret = iterateInventory(inventory, stock)
@@ -89,14 +118,7 @@ function iterateInventory(inv, evalfunc){
 function test3(){
   const marvel = [
           { name: 'Spider-Man', hero: true },
-          { name: 'Thor', hero: true },
-          { name: 'Thanos', hero: false },
-          { name: 'Black Panther', hero: true },
-          { name: 'Loki', hero: false },
-          { name: 'Captain Marvel', hero: true },
-          { name: 'Silver Surfer', hero: true },
-          { name: 'Magneto', hero: false },
-          { name: 'Venom', hero: false }
+                  { name: 'Spider-Man', hero: true },
   ];
 
   const out3 = "EXPECTED OUTPUT (string): 'Total Villains Count: 4'";
@@ -132,33 +154,7 @@ function test2(){
       print(r2)
 
 }
-// // // ARRAY - MAP
-// const squares = [2, 3, 4, 5];
-// const results = squares.map(n => {
-//     return n * n;
-// });
-// console.log(results);
 
-
-function test1(){
-  const heros = [
-      { name: 'Spider-Man' },
-      { name: 'Thor' },
-      { name: 'Black Panther' },
-      { name: 'Captain Marvel' },
-      { name: 'Silver Surfer' }
-  ];
-
-  let i = 0  //this is not nice but it works? ^_-
-  const r = heros.map(n => {
-    const ob = {}
-    print(n)
-    ob['id'] = i++
-    ob['hero'] = n['name']
-    return ob
-  });
-  print(r)
-}
 
 function print(msg){
   console.log(msg)
